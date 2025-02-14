@@ -1,0 +1,48 @@
+{
+  "name": "datocms-plugin-<INSERT-YOUR-PACKAGE-NAME-HERE>",
+  "description": "<INSERT-YOUR-PLUGIN-DESCRIPTION-HERE>",
+  "homepage": "https://github.com/<USER>/<REPO>",
+  "private": false,
+  "version": "0.1.0",
+  "author": "<YOUR-NAME> <<YOUR-EMAIL>>",
+  "type": "module",
+  "keywords": [
+    "datocms-plugin"
+  ],
+  "datoCmsPlugin": {
+    "title": "Dato Plugin",
+    "coverImage": "docs/cover-1200x800.png",
+    "previewImage": "docs/preview.mp4",
+    "entryPoint": "dist/index.html",
+    "permissions": []
+  },
+  "files": [
+    "dist",
+    "docs"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "datocms-plugin-sdk": "^2.0.9",
+    "datocms-react-ui": "^2.0.9",
+    "lodash": "^4.17.21",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "reading-time": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.15",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "globals": "^15.9.0",
+    "stream": "^0.0.3",
+    "typescript": "^5.5.3",
+    "util": "^0.12.5",
+    "vite": "^5.4.1"
+  }
+}
