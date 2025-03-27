@@ -1,0 +1,41 @@
+
+.container {
+  border: 1px solid var(--darker-border-color);
+  padding: 4px;
+  position: relative;
+}
+
+.loaderContainer {
+  height: 100%;
+  width: 100%;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.fallbackButton {
+  position: absolute;
+  right: 4px;
+}
+
+.categoriesContainer {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 0 4px;
+  gap: 4px;
+  border-right: 1px solid var(--border-color);
+}
+
+.productsContainer {
+  flex: 1;
+  display: flex;
+  padding: 0 4px;
+  gap: 4px;
+  flex-direction: column;
+}

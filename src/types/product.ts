@@ -1,7 +1,7 @@
 
 type ManufacturerType = {
   Id: number
-  LogoKey: null
+  LogoKey: string | null
   LogoPath: string
   Name: string
   PartNo: string
@@ -10,55 +10,55 @@ type ManufacturerType = {
 
 type OffhandType = {
   IncomingValue: number
-  Info: null
+  Info: string | null
   IsActive: boolean
   IsReturnable: boolean
-  LastChecked: null
-  LeadtimeDayCount: null
-  NextDeliveryDate: null
+  LastChecked: string | null
+  LeadtimeDayCount: number | null
+  NextDeliveryDate: string | null
   Value: number
 }
 
 type OnHandType = {
   IncomingValue: number
-  Info: null
+  Info: string | null
   IsActive: boolean
   IsReturnable: boolean
-  LastChecked: null
-  LeadtimeDayCount: null
-  NextDeliveryDate: null
+  LastChecked: string | null
+  LeadtimeDayCount: number | null
+  NextDeliveryDate: string | null
   Value: number
 }
 
 type OnHandSupplierType = {
   IncomingValue: number
-  Info: null
+  Info: string | null
   IsActive: boolean
   IsReturnable: boolean
-  LastChecked: null
-  LeadtimeDayCount: null
-  NextDeliveryDate: null
+  LastChecked: string | null
+  LeadtimeDayCount: number | null
+  NextDeliveryDate: string | null
   Value: number
 }
 
 type ProductType = {
   AdditionalImageKeySeed: string
-  CampaignImage:null
+  CampaignImage: string | null
   CategoryId: number
   CategoryIdSeed: string
-  EanCode:null
+  EanCode: string | null
   FlagIdSeed: string
   GroupByKey: string
   Id: number
-  Image:null
-  ImageAltText:null
+  Image: string | null
+  ImageAltText: string | null
   ImageKey: string
   IsBuyable: boolean
-  IsDangerousGoods:boolean
-  IsRecommendedQuantityFixed:boolean
-  IsSubscribable:boolean
+  IsDangerousGoods: boolean
+  IsRecommendedQuantityFixed: boolean
+  IsSubscribable: boolean
   Key: string
-  LargeImage:null
+  LargeImage: string | null
   Manufacturer: ManufacturerType    
   Name: string
   OnHand: OffhandType
@@ -71,31 +71,31 @@ type ProductType = {
   PartNo: string
   PopularityRank: number
   Price: number
-  PriceCatalog:null
+  PriceCatalog: number | null
   PriceIncVat: number
   PriceListId: number
-  PriceRecommended:null
+  PriceRecommended: string | null
   PriceStandard: number
-  Quantity:null
+  Quantity: number | null
   RecommendedQuantity: number
   SortOrder: number
   StatusId: number
-  StockDisplayBreakPoint:null
+  StockDisplayBreakPoint: string | null
   SubDescription: string
   SubHeader: string
-  Synonyms:null
-  ThumbnailImage:null
+  Synonyms: string | null
+  ThumbnailImage: string | null
   Type: number
   UniqueName: string
   UnitOfMeasurement: string
   UnitOfMeasurementCount:number
-  Updated:null
+  Updated: string | null
   VariantFlagIdSeed:null
-  VariantImageAltText:null
-  VariantImageKey:null
-  VariantName:null
-  VariantParametricSeed: string
-  VariantUniqueName:null
+  VariantImageAltText: string | null
+  VariantImageKey: string | null
+  VariantName: string | null
+  VariantParametricSeed: string | string
+  VariantUniqueName: string | null
   VatRate: number
 }
 

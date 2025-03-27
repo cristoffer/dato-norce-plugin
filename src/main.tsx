@@ -3,7 +3,7 @@ import "datocms-react-ui/styles.css";
 import { render } from "./utils/render";
 import NorseProductFieldEditor from "./entrypoints/NorseProductFieldEditor";
 import ConfigScreen from "./entrypoints/ConfigScreen";
-import AdditionalProductDataModal from "./components/AdditionalProductDataModal";
+import AdditionalProductDataModal from "./components/AdditionalProductDataModal/AdditionalProductDataModal";
 
 const FIELD_EXTENSION_ID = 'norceProduct';
 const INITIAL_HEIGHT = 48;

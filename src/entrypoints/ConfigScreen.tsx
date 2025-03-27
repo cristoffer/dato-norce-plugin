@@ -1,6 +1,9 @@
 import type { RenderConfigScreenCtx } from 'datocms-plugin-sdk';
 import { Button, Canvas, FieldGroup, Form, TextField } from 'datocms-react-ui';
 import { useState } from 'react';
+import RelationShipType from '../types/relationship';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type Props = {
   ctx: RenderConfigScreenCtx;
@@ -9,11 +12,7 @@ type Props = {
 export default function ConfigScreen({ ctx }: Props) {
   const [categoriesEndpoint, setcategoriesEndpoint] = useState<string>(ctx?.plugin?.attributes?.parameters?.categoriesEndpoint as string || '')
 
-  /**
-   * https://localhost:3000/api/norce/products/categories
-   * 
-   * 
-   */
+  /* https://localhost:3000/api/norce/products/categories */
 
   function saveParameters () {
     ctx.updatePluginParameters({ categoriesEndpoint: categoriesEndpoint })
@@ -22,7 +21,7 @@ export default function ConfigScreen({ ctx }: Props) {
 
   function removeRelationship (relationship: any) {
     const { parameters } = ctx.plugin.attributes
-    const filtered = parameters.relationships.filter((item) => item.field.id !== relationship.field.id)
+    const filtered = (parameters.relationships as Array<RelationShipType>).filter((item: RelationShipType) => item.field.id !== relationship.field.id)
 
     ctx.openConfirm({
       title: 'Are you sure you want to remove this relationship?',
@@ -45,14 +44,16 @@ export default function ConfigScreen({ ctx }: Props) {
       },
     }).then((res) => {
       if (res === 'positive') {
-        ctx.updatePluginParameters({ ...parameters, relationships: filtered})
+        ctx.updatePluginParameters({ ...parameters, relationships: filtered })
       }
     })
   }
 
+  const relationships = ctx.plugin.attributes.parameters?.relationships as Array<RelationShipType>
+
   return (
     <Canvas ctx={ctx}>
-      <h2>Norce Product Injecor Plugin</h2>
+      <h2>Norce Product Injector Plugin</h2>
       <p>Plug you products in to you Dato models</p>
       <Form onSubmit={() => saveParameters()}>
         <FieldGroup>
@@ -77,10 +78,9 @@ export default function ConfigScreen({ ctx }: Props) {
               <li>.../api/categories/id - to fetch products in specific category</li>
             </ul>
           </div>
-          
         </FieldGroup>
 
-        {ctx.plugin.attributes.parameters.relationships?.length && 
+        {relationships?.length && 
           <div>
             <h4>Saved Product - Field relationships</h4>
             <table>
@@ -92,11 +92,15 @@ export default function ConfigScreen({ ctx }: Props) {
                 </tr>
               </thead>
               <tbody>
-                {ctx.plugin.attributes.parameters.relationships.map((rel, index) => (
+                {relationships.map((rel: any, index: number) => (
                   <tr key={index}>
                     <td style={{border: '1px solid black'}}>{rel.field.attributes.label}</td>
-                    <td style={{border: '1px solid black'}}>{rel.path}</td>
-                    <td style={{border: '1px solid black'}}><Button onClick={() => removeRelationship(rel)} buttonSize='xxs' buttonType='negative' fullWidth>x</Button></td>
+                    <td style={{border: '1px solid black'}}>{rel.property.path}</td>
+                    <td style={{border: '1px solid black'}}>
+                      <Button onClick={() => removeRelationship(rel)} buttonSize='xxs' buttonType='negative' fullWidth>
+                        <FontAwesomeIcon icon={faTrash} />
+                      </Button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

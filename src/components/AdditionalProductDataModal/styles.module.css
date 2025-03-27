@@ -1,0 +1,45 @@
+
+.relationshipsWrapper {
+  display: grid; 
+  border-bottom: 1px solid var(--darker-border-color);
+  gap: 4px;
+  padding: 4px 0;
+}
+
+.relationship {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.relationshipValue {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.relationshipPath {
+  margin-right: 0.25rem;
+}
+
+.selectTableHead {
+  display: grid;
+  grid-template-columns: 30% 50%;
+  border-bottom: 1px solid var(--darker-border-color);
+}
+
+.selectTable {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  margin-top: 1rem;
+}
+
+.firstColumn {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.selectableFieldWrapper {
+  margin: 4px 0;
+}

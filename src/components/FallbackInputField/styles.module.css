@@ -1,0 +1,18 @@
+
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 8px;
+}
+
+.inputWrapper {
+  flex-grow: 1;
+}
+
+.fallbackButton {
+  right: 4px;
+  flex-grow: 0;
+}

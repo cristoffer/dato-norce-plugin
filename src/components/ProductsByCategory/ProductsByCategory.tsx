@@ -1,9 +1,11 @@
 import { RenderFieldExtensionCtx } from "datocms-plugin-sdk"
 import { useEffect, useState } from "react"
 import { Spinner } from 'datocms-react-ui';
-import Product from "./Product";
-import ProductCategoryType from "../types/productCategory";
-import ProductType from "../types/product";
+import Product from "../Product/Product";
+import ProductCategoryType from "../../types/productCategory";
+import ProductType from "../../types/product";
+import styles from "./styles.module.css"
+import { sortAlfabeticallyName } from "../../utils/sortAB";
 
 type PropTypes = {
   ctx: RenderFieldExtensionCtx
@@ -25,18 +27,12 @@ export default function ProductsByCategory ({ ctx, category}: PropTypes) {
     const data = await response.json()
 
     if (data.success) {
-      setProductList(data.categories.Items)
+      setProductList(data.categories.Items.sort(sortAlfabeticallyName))
     }
   }
 
   if (!productList?.length) {
-    return (
-      <div style={{ 
-        height: '100%', 
-        width: '100%', 
-        display: 'flex', 
-        justifyContent:'center', 
-        alignItems:'center'}}><Spinner /></div>)
+    return (<div className={styles.loadingWrapper}><Spinner /></div>)
   }
 
   return (
